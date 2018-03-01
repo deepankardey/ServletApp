@@ -24,7 +24,7 @@ public class Products {
 	
 	private Integer price;
 	
-	@OneToMany(mappedBy = "products",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "products",fetch = FetchType.LAZY)
 	private Set<OrderProduct> orderProducts;
 	
 	public Products() {

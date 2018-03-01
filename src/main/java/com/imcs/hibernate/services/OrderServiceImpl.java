@@ -6,10 +6,9 @@ import com.imcs.hibernate.dao.OrderDao;
 import com.imcs.hibernate.entity.Customers;
 import com.imcs.hibernate.entity.OrderProduct;
 import com.imcs.hibernate.entity.Orders;
+import com.imcs.hibernate.exception.CustomException;
 import com.imcs.hibernate.interfaces.OrderDaoInterface;
 import com.imcs.hibernate.interfaces.OrderServiceInterface;
-
-import trng.imcs.hib.excp.CustomException;
 
 public class OrderServiceImpl implements OrderServiceInterface {
 	

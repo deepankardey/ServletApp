@@ -4,10 +4,9 @@ import java.util.List;
 
 import com.imcs.hibernate.dao.CustomerDao;
 import com.imcs.hibernate.entity.Customers;
+import com.imcs.hibernate.exception.CustomException;
 import com.imcs.hibernate.interfaces.CustomerDaoInterface;
 import com.imcs.hibernate.interfaces.CustomerServiceInterface;
-
-import trng.imcs.hib.excp.CustomException;
 
 public class CustomerServiceImpl implements CustomerServiceInterface {
 	
@@ -31,6 +30,10 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
 	public List<Customers> loadAllCustomers() throws CustomException {
 		return customerDao.loadAllCustomers();
+	}
+
+	public Customers validateCustomer(String usrename,String password) throws CustomException {
+		return customerDao.validateCustomer(usrename,password);
 	}
 
 }

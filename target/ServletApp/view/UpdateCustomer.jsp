@@ -25,35 +25,30 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">IMCS</a>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="Header.jsp" />
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-          	<li><a href="Home.jsp">Home</a></li>
-            <li><a href="ShowCustomer.jsp">Show Customers</a></li>
-            <li class="active"><a href="AddCustomer.jsp">Add Customer</a></li>
-            <li><a href="AddProduct.jsp">Add Product</a></li>
-            <li><a href="Order.jsp">Place Order</a></li>
+          	<li><a href="${pageContext.request.contextPath}/view/Home.jsp">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowCustomer.jsp">Show Customers</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/view/AddCustomer.jsp">Add Customer</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/PlaceOrder.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowOrders.jsp">Show Order</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Enter Customer Details</h1>
 			<div class="container">
-		    <form class="well form-horizontal" action="FormUpload" method="post"  id="contact_form">
+		    <form class="well form-horizontal" action="${pageContext.request.contextPath}/CustomerProcess" method="post"  id="contact_form">
 			<fieldset>
 			<c:forEach items="${customerList}" var="user" varStatus="count">
 			
 			<!-- customer id-->
-          	
 			<input  name="id" placeholder="First Name" class="form-control"  type="hidden" value="${user.id}">
+			<!-- address id-->
+			<input  name="address_id" placeholder="address_id" class="form-control"  type="hidden" value="${user.address.id}">
 			
 			
 			<!-- Title -->
@@ -164,7 +159,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  		<input name="billing_street" placeholder="Billing Street" class="form-control" type="text" value="${user.billingStreet}">
+			  		<input name="billing_street" placeholder="Billing Street" class="form-control" type="text" value="${user.address.billingStreet}">
 			    </div>
 			  </div>
 			</div>
@@ -175,7 +170,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="billing_city" placeholder="Billing city" class="form-control"  type="text" value="${user.billingCity}">
+			  <input name="billing_city" placeholder="Billing city" class="form-control"  type="text" value="${user.address.billingCity}">
 			    </div>
 			  </div>
 			</div>
@@ -186,7 +181,7 @@
 			    <div class="col-md-4 selectContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-			        <select name="billing_state" class="form-control selectpicker" value="${user.billingState}">
+			        <select name="billing_state" class="form-control selectpicker" value="${user.address.billingState}">
 					      <option value=" " >Please select your state</option>
 				      <option value="Alabama">Alabama</option>
 				      <option  value="Alabama">Alaska</option>
@@ -250,7 +245,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="billing_zip" placeholder="Zip Code" class="form-control"  type="text" value="${user.billingZip}">
+			  <input name="billing_zip" placeholder="Zip Code" class="form-control"  type="text" value="${user.address.billingZip}">
 			    </div>
 			</div>
 			</div>
@@ -261,7 +256,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="billing_country" placeholder="Billing Country" class="form-control"  type="text" value="${user.billingCountry}">
+			  <input name="billing_country" placeholder="Billing Country" class="form-control"  type="text" value="${user.address.billingCountry}">
 			    </div>
 			  </div>
 			</div>
@@ -272,7 +267,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  		<input name="shipping_street" placeholder="Shipping Street" class="form-control" type="text" value="${user.shippingStreet}">
+			  		<input name="shipping_street" placeholder="Shipping Street" class="form-control" type="text" value="${user.address.shippingStreet}">
 			    </div>
 			  </div>
 			</div>
@@ -283,7 +278,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="shipping_city" placeholder="Shipping city" class="form-control"  type="text" value="${user.shippingCity}">
+			  <input name="shipping_city" placeholder="Shipping city" class="form-control"  type="text" value="${user.address.shippingCity}">
 			    </div>
 			  </div>
 			</div>
@@ -294,7 +289,7 @@
 			    <div class="col-md-4 selectContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-			        <select name="shipping_state" class="form-control selectpicker" value="${user.shippingState}">
+			        <select name="shipping_state" class="form-control selectpicker" value="${user.address.shippingState}">
 					      <option value=" " >Please select your state</option>
 				      <option value="Alabama">Alabama</option>
 				      <option  value="Alabama">Alaska</option>
@@ -358,7 +353,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="shipping_zip" placeholder="Zip Code" class="form-control"  type="text" value="${user.shippingZip}">
+			  <input name="shipping_zip" placeholder="Zip Code" class="form-control"  type="text" value="${user.address.shippingZip}">
 			    </div>
 			</div>
 			</div>
@@ -369,7 +364,7 @@
 			    <div class="col-md-4 inputGroupContainer">
 			    <div class="input-group">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-			  <input name="shipping_country" placeholder="Shipping Country" class="form-control"  type="text" value="${user.shippingCountry}">
+			  <input name="shipping_country" placeholder="Shipping Country" class="form-control"  type="text" value="${user.address.shippingCountry}">
 			    </div>
 			  </div>
 			</div>

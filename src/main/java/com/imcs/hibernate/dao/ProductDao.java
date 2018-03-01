@@ -7,10 +7,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.imcs.hibernate.entity.Products;
+import com.imcs.hibernate.exception.CustomException;
 import com.imcs.hibernate.interfaces.ProductDaoInterface;
 import com.imcs.hibernate.utils.HibernateUtil;
-
-import trng.imcs.hib.excp.CustomException;
 
 public class ProductDao implements ProductDaoInterface {
 	
@@ -33,6 +32,23 @@ public class ProductDao implements ProductDaoInterface {
 				session.close();
 		}
 		return query.list();
+	}
+
+	public Products loadProduct(String productName) throws CustomException {
+		Session session = null;
+		Query query = null;
+		try {
+			session = getSession();
+			query = session.createQuery("From Products where name =:name");
+			query.setParameter("name", productName);
+			return (Products)query.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return (Products)query.uniqueResult();
 	}
 
 	

@@ -21,13 +21,7 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">IMCS</a>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="Header.jsp" />
 
     <div class="container-fluid">
       <div class="row">
@@ -36,8 +30,8 @@
           	<li><a href="Home.jsp">Home</a></li>
             <li><a href="ShowCustomer.jsp">Show Customers</a></li>
             <li><a href="AddCustomer.jsp">Add Customer</a></li>
-            <li class="active"><a href="AddProduct.jsp">Add Product</a></li>
             <li><a href="Order.jsp">Place Order</a></li>
+            <li><a href="ShowOrders.jsp">Show Order</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

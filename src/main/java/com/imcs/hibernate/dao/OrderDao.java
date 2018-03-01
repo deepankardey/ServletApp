@@ -1,8 +1,5 @@
 package com.imcs.hibernate.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -14,14 +11,14 @@ import org.hibernate.criterion.Restrictions;
 import com.imcs.hibernate.entity.Customers;
 import com.imcs.hibernate.entity.OrderProduct;
 import com.imcs.hibernate.entity.Orders;
+import com.imcs.hibernate.exception.CustomException;
 import com.imcs.hibernate.interfaces.OrderDaoInterface;
 import com.imcs.hibernate.utils.HibernateUtil;
-
-import trng.imcs.hib.excp.CustomException;
 
 public class OrderDao implements OrderDaoInterface {
 	
 	
+	//Session session = (Session)HibernateUtil.buildSessionFactory().getCurrentSession().merge(orderProduct);
 
 	private Session getSession() {
 		return HibernateUtil.buildSessionFactory().openSession();
@@ -35,6 +32,7 @@ public class OrderDao implements OrderDaoInterface {
 			session.save(orderProduct);
 			transaction.commit();
 			added = true;
+			return added;
 		} catch (Exception e) {
 			transaction.rollback();
 			e.printStackTrace();

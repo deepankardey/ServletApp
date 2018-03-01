@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,13 +28,7 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">IMCS</a>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="Header.jsp" />
 
     <div class="container-fluid">
       <div class="row">
@@ -42,13 +37,13 @@
           	<li><a href="${pageContext.request.contextPath}/view/Home.jsp">Home</a></li>
             <li class="active"><a href="${pageContext.request.contextPath}/view/ShowCustomer.jsp">Show Customers</a></li>
             <li ><a href="${pageContext.request.contextPath}/view/AddCustomer.jsp">Add Customer</a></li>
-            <li><a href="${pageContext.request.contextPath}/view/AddProduct.jsp">Add Product</a></li>
-            <li><a href="${pageContext.request.contextPath}/view/Order.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/PlaceOrder.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowOrders.jsp">Show Order</a></li>
           </ul>
         </div>
         
         <!-- Text input-->
-        <form class="well form-horizontal" action="${pageContext.request.contextPath}/CustomerLookUp" method="post"  id="contact_form">
+        <form class="well form-horizontal" action="${pageContext.request.contextPath}/CustomerLookUp" method="get"  id="contact_form">
 		    <div class="input-group" style="margin-left: 75%;display: inline-flex;">
 		  		<input name="customer_id" placeholder="Customer ID" class="form-control"  type="text">
 		  		<button type="submit" class="btn btn-warning" >Search </span></button>
@@ -70,7 +65,7 @@
 			        <tbody class="table-body">
 			            <c:forEach items="${customerList}" var="user" varStatus="count">
 				                <tr style="color:black;">
-				                	<td><a href="${pageContext.request.contextPath}/CustomerLookUp?id=${user.id}"><c:out value="${user.id}" /></a></td>
+				                	<td><a href="${pageContext.request.contextPath}/CustomerLookUp?id=${user.id}&showFullDetails=true"><c:out value="${user.id}" /></a></td>
 				                	<td><c:out value="${user.firstName}" /></td>
 				                	<td><c:out value="${user.middleName}" /></td>
 				                	<td><c:out value="${user.lastName}" /></td>

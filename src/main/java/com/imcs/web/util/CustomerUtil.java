@@ -19,6 +19,7 @@ public class CustomerUtil {
 		String company = request.getParameter("company");
 		String displayName = request.getParameter("display_name");
 		String printOnCheck = request.getParameter("print_on_check");
+		String addressID = request.getParameter("address_id");
 		String billingStreet = request.getParameter("billing_street");
 		String billingCity = request.getParameter("billing_city");
 		String billingState = request.getParameter("billing_state");
@@ -52,6 +53,9 @@ public class CustomerUtil {
 		address.setShippingState(shippingState);
 		address.setShippingZip(Integer.parseInt(shippingZip));
 		address.setShippingCountry(shippingCountry);
+		if(addressID!=null)
+			address.setId(Long.parseLong(addressID));
+		address.setCustomer(customer);
 		customer.setAddress(address);
 		return customer;
 	}

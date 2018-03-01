@@ -1,4 +1,4 @@
-package trng.imcs.hib.excp;
+package com.imcs.hibernate.exception;
 
 public class CustomException extends RuntimeException {
 

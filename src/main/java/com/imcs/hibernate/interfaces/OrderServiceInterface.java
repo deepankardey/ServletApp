@@ -5,9 +5,7 @@ import java.util.List;
 import com.imcs.hibernate.entity.Customers;
 import com.imcs.hibernate.entity.OrderProduct;
 import com.imcs.hibernate.entity.Orders;
-import com.imcs.hibernate.pojo.OrderDetails;
-
-import trng.imcs.hib.excp.CustomException;
+import com.imcs.hibernate.exception.CustomException;
 
 public interface OrderServiceInterface {
 

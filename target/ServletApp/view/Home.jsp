@@ -23,23 +23,17 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">IMCS</a>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="Header.jsp" />  
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
           	<li class="active"><a href="#">Home</a></li>
-            <li><a href="ShowCustomer.jsp">Show Customers</a></li>
-            <li ><a href="AddCustomer.jsp">Add Customer</a></li>
-            <li><a href="AddProduct.jsp">Add Product</a></li>
-            <li><a href="Order.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowCustomer.jsp">Show Customers</a></li>
+            <li ><a href="${pageContext.request.contextPath}/view/AddCustomer.jsp">Add Customer</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/PlaceOrder.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowOrders.jsp">Show Order</a></li>
           </ul>
         </div>
       </div>

@@ -2,28 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>FormUpload</display-name>
   <welcome-file-list>
-    <welcome-file>view/Home.jsp</welcome-file>
+    <welcome-file>view/index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>FormUpload</display-name>
-    <servlet-name>FormUpload</servlet-name>
-    <servlet-class>com.imcs.web.servlet.FormUpload</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FormUpload</servlet-name>
-    <url-pattern>/FormUpload</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ProductUpload</display-name>
-    <servlet-name>ProductUpload</servlet-name>
-    <servlet-class>com.imcs.web.servlet.ProductUpload</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProductUpload</servlet-name>
-    <url-pattern>/Product</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
@@ -41,8 +21,63 @@
   	<servlet-name>CustomerLookUp</servlet-name>
   	<servlet-class>com.imcs.web.servlet.CustomerLookUp</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CustomerProcess</display-name>
+  	<servlet-name>CustomerProcess</servlet-name>
+  	<servlet-class>com.imcs.web.servlet.CustomerProcess</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>CustomerLookUp</servlet-name>
   	<url-pattern>/CustomerLookUp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CustomerProcess</servlet-name>
+  	<url-pattern>/CustomerProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>LogOut</display-name>
+  	<servlet-name>LogOut</servlet-name>
+  	<servlet-class>com.imcs.web.servlet.LogOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LogOut</servlet-name>
+  	<url-pattern>/LogOut</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>RegisterUser</display-name>
+  	<servlet-name>RegisterUser</servlet-name>
+  	<servlet-class>com.imcs.web.servlet.RegisterUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RegisterUser</servlet-name>
+  	<url-pattern>/RegisterUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>OrderView</display-name>
+  	<servlet-name>OrderView</servlet-name>
+  	<servlet-class>com.imcs.web.servlet.OrderView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>OrderView</servlet-name>
+  	<url-pattern>/OrderView</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>OrderLookUp</display-name>
+  	<servlet-name>OrderLookUp</servlet-name>
+  	<servlet-class>com.imcs.web.servlet.OrderLookUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>OrderLookUp</servlet-name>
+  	<url-pattern>/OrderLookUp</url-pattern>
   </servlet-mapping>
 </web-app>

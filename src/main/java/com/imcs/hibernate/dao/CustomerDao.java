@@ -8,10 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.imcs.hibernate.entity.Customers;
+import com.imcs.hibernate.exception.CustomException;
 import com.imcs.hibernate.interfaces.CustomerDaoInterface;
 import com.imcs.hibernate.utils.HibernateUtil;
-
-import trng.imcs.hib.excp.CustomException;
 
 public class CustomerDao implements CustomerDaoInterface {
 	
@@ -104,6 +103,26 @@ public class CustomerDao implements CustomerDaoInterface {
 		return query.list();
 	}
 
+	public Customers validateCustomer(String username,String password) throws CustomException {
+		Session session = null;
+		Query query = null;
+		try {
+			session = getSession();
+			query = session.createQuery("From Customers as customer where customer.firstName =:firstName "
+					+ "and customer.lastName =:lastName");
+			query.setParameter("firstName", username);
+			query.setParameter("lastName", password);
+			return (Customers)query.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return (Customers)query.uniqueResult();
+		
+	}
+	
 	private Session getSession() {
 		return HibernateUtil.buildSessionFactory().openSession();
 	}

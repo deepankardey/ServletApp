@@ -25,13 +25,7 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">IMCS</a>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="Header.jsp" />
 
     <div class="container-fluid">
       <div class="row">
@@ -40,20 +34,21 @@
           	<li><a href="${pageContext.request.contextPath}/view/Home.jsp">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/view/ShowCustomer.jsp">Show Customers</a></li>
             <li class="active"><a href="${pageContext.request.contextPath}/view/AddCustomer.jsp">Add Customer</a></li>
-            <li><a href="${pageContext.request.contextPath}/view/AddProduct.jsp">Add Product</a></li>
-            <li><a href="${pageContext.request.contextPath}/view/Order.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/PlaceOrder.jsp">Place Order</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/ShowOrders.jsp">Show Order</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Enter Customer Details</h1>
 			<div class="container">
-		    <form class="well form-horizontal" action="FormUpload" method="post"  id="contact_form">
+		    <form class="well form-horizontal" action="${pageContext.request.contextPath}/CustomerProcess" method="post"  id="contact_form">
 			<fieldset>
 			<c:forEach items="${customerList}" var="user" varStatus="count">
 			
 			<!-- customer id-->
-          	
 			<input  name="id" placeholder="First Name" class="form-control"  type="hidden" value="${user.id}">
+			<!-- address id-->
+			<input  name="address_id" placeholder="address_id" class="form-control"  type="hidden" value="${user.address.id}">
 			
 			
 			<!-- Title -->
